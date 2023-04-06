@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "525763474499",
+    "project_id": "epsilon-hardware",
+    "storage_bucket": "epsilon-hardware.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525763474499:android:b3d35aba5256f8a313d0f6",
+        "android_client_info": {
+          "package_name": "com.epsilonhardware"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525763474499-laq6pl4002jkkk7s5rje25g3t1a1ju1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1ehQp6KGOC5M8kWi4KuXzoDJDKQSZwa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525763474499-laq6pl4002jkkk7s5rje25g3t1a1ju1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
