@@ -1,6 +1,8 @@
 package com.epsilonhardware.activities
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,10 +15,20 @@ import android.webkit.*
 import com.epsilonhardware.core.isInternetAvailable
 import com.epsilonhardware.databinding.ActivityMainBinding
 import com.epsilonhardware.databinding.DialogInternetBinding
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.ActivityResult
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 
 
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val appUpdateManager: AppUpdateManager by lazy {
+        AppUpdateManagerFactory.create(this)
+    }
+    private val UPDATE_APP_REQUEST_CODE = 111
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +37,7 @@ class MainActivity : BaseActivity() {
 
         if (isInternetAvailable()) {
             setWebView()
+            checkAppUpdatesAvailability()
         } else {
             noInternetDialog()
         }
@@ -38,6 +51,43 @@ class MainActivity : BaseActivity() {
         return baseUrl
     }
 
+    private fun checkAppUpdatesAvailability() {
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
+                             AppUpdateType.IMMEDIATE
+                    )
+            ) {
+                appUpdateManager.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        AppUpdateType.IMMEDIATE,
+                        this,
+                        UPDATE_APP_REQUEST_CODE
+                )
+            }
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == UPDATE_APP_REQUEST_CODE) {
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+                }
+
+                Activity.RESULT_CANCELED -> {
+                    checkAppUpdatesAvailability()
+                }
+
+                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> {
+                    checkAppUpdatesAvailability()
+                }
+            }
+        }
+    }
+    
     private fun setWebView() {
         binding.webView.loadUrl(getUrl())
         binding.webView.settings.javaScriptEnabled = true

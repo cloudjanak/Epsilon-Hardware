@@ -7,7 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import com.epsilonhardware.databinding.ActivitySplashBinding
 import kotlinx.coroutines.delay
 
-class SplashActivity : BaseActivity() {
+class
+SplashActivity : BaseActivity() {
     private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
