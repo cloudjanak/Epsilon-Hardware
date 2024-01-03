@@ -1,12 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.huawei.agconnect'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.epsilonhardware"
@@ -24,8 +25,21 @@ android {
         setProperty("archivesBaseName", "Epsilon_Hardware_" + versionName + "_" + versionCode + "_" + formattedDate)
     }
 
+
+    signingConfigs {
+        config {
+            storeFile file('/Users/fs/Desktop/Janak/Epsilon-Hardware/app/data/Epsilon_Hardware.jks')
+            storePassword 'Epsilon_Hardware'
+            keyPassword 'Epsilon_Hardware'
+            keyAlias 'Epsilon_Hardware'
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
         release {
+            signingConfig signingConfigs.config
             minifyEnabled false
             crunchPngs true
             ndk {
@@ -43,11 +57,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     buildFeatures {
@@ -106,4 +120,10 @@ dependencies {
     //OneSingnale
     implementation 'com.onesignal:OneSignal:4.8.5'
     implementation("com.google.android.play:app-update-ktx:2.0.1")
+    
+    implementation 'com.huawei.agconnect:agconnect-core:1.6.5.300'
+    implementation 'com.huawei.hms:push:6.1.0.300'
 }
+//https://documentation.onesignal.com/docs/huawei-sdk-setup
+// Add the information to the bottom of the file.
+//apply plugin: 'com.huawei.agconnect'

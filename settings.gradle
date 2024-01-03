@@ -3,6 +3,27 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (it.requested.id.getNamespace() == 'com.huawei.agconnect') {
+                println ">> ${it.requested.id.id}"
+                if (it.requested.id.id == 'com.huawei.agconnect.agcp') {
+                    it.useModule('com.huawei.agconnect:agcp:1.7.3.302')
+                }
+                if (it.requested.id.id == 'com.huawei.agconnect.apms') {
+                    it.useModule('com.huawei.agconnect:agconnect-apms-plugin:1.6.1.300')
+                }
+                println ">> ${it.target}"
+            } else {
+                println ">  ${it.target}"
+            }
+        }
+    }
+
+    plugins {
+        id 'com.huawei.agconnect.agcp' version '1.6.0.300'
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +31,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {url 'https://developer.huawei.com/repo/'}
     }
 }
 rootProject.name = "EpsilonHardware"
