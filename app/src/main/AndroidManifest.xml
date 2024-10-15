@@ -5,8 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"
-        tools:node="remove"/>
+    <!--<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"
+        tools:node="remove"/>-->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -43,7 +43,7 @@
               Ensure you only have one intent-filter for "com.huawei.push.action.MESSAGING_EVENT".
               HMS only supports one per app.
             -->
-        <service
+        <!--<service
             android:name=".YourHmsMessageService"
             android:exported="true"
             tools:ignore="ExportedService">
@@ -53,12 +53,12 @@
         </service>
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
-            android:value="false" />
+            android:value="false" />-->
     </application>
-    <queries>
+    <!--<queries>
         <intent>
             <action android:name="com.huawei.hms.core.aidlservice" />
         </intent>
-    </queries>
+    </queries>-->
 </manifest>
 

@@ -5,7 +5,7 @@ pluginManagement {
         mavenCentral()
         maven {url 'https://developer.huawei.com/repo/'}
     }
-    resolutionStrategy {
+    /*resolutionStrategy {
         eachPlugin {
             if (it.requested.id.getNamespace() == 'com.huawei.agconnect') {
                 println ">> ${it.requested.id.id}"
@@ -20,11 +20,11 @@ pluginManagement {
                 println ">  ${it.target}"
             }
         }
-    }
+    }*/
 
-    plugins {
+    /*plugins {
         id 'com.huawei.agconnect.agcp' version '1.6.0.300'
-    }
+    }*/
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

@@ -1,5 +1,6 @@
 package com.epsilonhardware;
 
+/*
 import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.RemoteMessage;
 import com.onesignal.OneSignalHmsEventBridge;
@@ -17,4 +18,4 @@ public class YourHmsMessageService extends HmsMessageService {
         // Forward event on to OneSignal SDK
         OneSignalHmsEventBridge.onMessageReceived(this, message);
     }
-}
+}*/

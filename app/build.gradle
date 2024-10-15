@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.firebase.crashlytics'
-    id 'com.huawei.agconnect'
+    /*id 'com.huawei.agconnect'*/
     id 'com.google.gms.google-services'
 }
 
@@ -13,8 +13,8 @@ android {
         applicationId "com.epsilonhardware"
         minSdk 21
         targetSdk 34
-        versionCode 6
-        versionName "6.0"
+        versionCode 7
+        versionName "7.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -120,8 +120,8 @@ dependencies {
     //OneSingnale
     implementation 'com.onesignal:OneSignal:4.8.5'
     implementation("com.google.android.play:app-update-ktx:2.1.0")
-    implementation 'com.huawei.agconnect:agconnect-core:1.9.1.301'
-    implementation 'com.huawei.hms:push:6.1.0.300'
+    /*implementation 'com.huawei.agconnect:agconnect-core:1.9.1.301'
+    implementation 'com.huawei.hms:push:6.1.0.300'*/
 }
 //https://documentation.onesignal.com/docs/huawei-sdk-setup
 // Add the information to the bottom of the file.
